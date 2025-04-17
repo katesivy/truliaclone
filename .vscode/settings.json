@@ -4,5 +4,6 @@
   "editor.formatOnSave": true,
   "eslint.format.enable": true,
   "prettier.documentSelectors": ["{}", "()"],
-  "notebook.defaultFormatter": "ionutvmi.path-autocomplete"
+  "notebook.defaultFormatter": "ionutvmi.path-autocomplete",
+  "cSpell.words": ["trulia"]
 }

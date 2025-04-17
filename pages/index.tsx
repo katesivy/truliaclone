@@ -7,6 +7,7 @@ import Hero from "@/app/(components)/Hero";
 import Nav from "@/app/(components)/Nav";
 import HomesGrid from "@/app/(components)/HomesGrid";
 import HomeById from "./home/[id]";
+import type { Metadata } from "next";
 interface Home {
   _id: ObjectId;
   title: string;
@@ -16,6 +17,10 @@ interface Home {
 interface TopProps {
   homes: Home[];
 }
+
+export const metadata: Metadata = {
+  title: "Trulia Clone",
+};
 
 export const getStaticProps: GetStaticProps<TopProps> = async () => {
   try {
@@ -44,13 +49,12 @@ export const getStaticProps: GetStaticProps<TopProps> = async () => {
 export default function Page({
   homes,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  console.log("homes", homes);
   return (
-    <main>
-      <Nav />
-      <Hero />
-      <HomesGrid props={homes} />
-      <HomeById props={homes} />
-    </main>
+    <>
+      <main>
+        <Hero />
+        <HomesGrid props={homes} />
+      </main>
+    </>
   );
 }
