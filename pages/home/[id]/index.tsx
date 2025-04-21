@@ -1,32 +1,18 @@
 import { GetStaticProps } from "next";
 import clientPromise from "../../../lib/mongodb";
-import Link from "next/link";
 import React from "react";
-import { ObjectId } from "mongodb";
 import SelectedHome from "@/app/(components)/SelectedHome";
 
-interface Home {
-  _id: ObjectId;
-  title: string;
-  description: string;
-}
 
-interface TopProps {
-  homes: Home[];
-}
-
-export const getStaticProps: GetStaticProps<TopProps> = async (context) => {
-  console.log("context", context);
+export const getStaticProps: GetStaticProps = async (context) => {
   try {
     const client = await clientPromise;
 
     const db = client.db("trulia");
-    // const title = `${context.params.unique_id}`
-    //change to fi${nd home by id}
     const homes = await db
       .collection("trulia_data1")
       .find({
-        unique_id: context?.params?.id,
+        address_full: context?.params?.id,
       })
       .sort({})
       .toArray();
@@ -46,12 +32,10 @@ export const getStaticPaths = async () => {
   try {
     const client = await clientPromise;
     const db = client.db("trulia");
-    //change to find home by id
     const res = await db.collection("trulia_data1").find({}).sort({}).toArray();
     const data = JSON.parse(JSON.stringify(res));
-    // const ids = data.map(item => (item.id));
-    const ids = data.map((item) => item.unique_id);
-    const paths = ids.map((item) => ({ params: { id: item.toString() } }));
+    const ids = data.map((item: {address_full: string}) => item.address_full);
+    const paths = ids.map((item: {id: string}) => ({ params: { id: item.toString() } }));
 
     return {
       paths,
@@ -66,7 +50,6 @@ export const getStaticPaths = async () => {
 };
 
 const HomeById = (home: any) => {
-  console.log("homesbyid home", home);
 
   return (
     <>

@@ -1,7 +1,7 @@
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons/faMagnifyingGlass";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Search = () => {
+const Search = (props: any) => {
   return (
     <div className="flex place-content-between items-center rounded-lg bg-red-700">
       <div className=" md:w-96 bg-slate-200 rounded-l-lg text-black-200 ">

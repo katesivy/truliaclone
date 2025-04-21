@@ -1,28 +1,15 @@
-import { ObjectId } from "mongodb";
 import clientPromise from "../lib/mongodb";
 import { InferGetStaticPropsType, GetStaticProps } from "next";
-import Card from "@/app/(components)/Card";
 import React from "react";
 import Hero from "@/app/(components)/Hero";
-import Nav from "@/app/(components)/Nav";
 import HomesGrid from "@/app/(components)/HomesGrid";
-import HomeById from "./home/[id]";
 import type { Metadata } from "next";
-interface Home {
-  _id: ObjectId;
-  title: string;
-  description: string;
-}
-
-interface TopProps {
-  homes: Home[];
-}
 
 export const metadata: Metadata = {
   title: "Trulia Clone",
 };
 
-export const getStaticProps: GetStaticProps<TopProps> = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   try {
     const client = await clientPromise;
 

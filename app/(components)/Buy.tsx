@@ -2,6 +2,7 @@ import Link from "next/link";
 import { HomeImage } from "./HomeImage";
 
 export type Home = {
+  address_full: any;
   _id: string,
   unique_id: string,
   image_url: string,
@@ -12,7 +13,6 @@ export type Home = {
 }
 
 const Buy = (props: any) => {
-
   return (
     <div className="object-fill">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -21,7 +21,7 @@ const Buy = (props: any) => {
             <div className="col-span-1 md:col-span-1 border" key={home._id}>
               <Link
                 href="/home/[id]"
-                as={`/home/${home.unique_id}`}
+                as={`/home/${home.address_full}`}
                 key={home._id}
               >
                 <HomeImage urlToImage={home.image_url} title={"home"} />
