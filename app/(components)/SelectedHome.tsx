@@ -1,7 +1,5 @@
-const SelectedHome = (props) => {
-  console.log("selectedhome props", props);
+const SelectedHome = (props: any) => {
   const home = props?.props?.home?.[0];
-  console.log("home", home);
 
   return (
     <div className=" flex-row justify-self-center max-w-[992px] h-auto">

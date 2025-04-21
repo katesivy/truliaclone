@@ -1,16 +1,22 @@
 import Link from "next/link";
-import Image from "next/image";
-import { SyntheticEvent, useState } from "react";
 import { HomeImage } from "./HomeImage";
 
+export type Home = {
+  _id: string,
+  unique_id: string,
+  image_url: string,
+  beds: number,
+  bath: number,
+  sqr_ft: string,
+  title: string
+}
+
 const Buy = (props: any) => {
-  console.log("homes in Buy", props.props);
 
   return (
     <div className="object-fill">
-      {/*<div className="">*/}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {props.props[0].map((home) => {
+        {props.props[0].map((home: Home) => {
           return (
             <div className="col-span-1 md:col-span-1 border" key={home._id}>
               <Link
@@ -31,7 +37,6 @@ const Buy = (props: any) => {
         })}
       </div>
     </div>
-    //</div>
   );
 };
 
