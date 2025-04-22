@@ -1,5 +1,5 @@
 const HomesGrid = (props:any) => {
-  return <div>HomesGrid</div>;
+  return <div>Newly listed homes</div>;
 };
 
 export default HomesGrid;
