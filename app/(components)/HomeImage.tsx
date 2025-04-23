@@ -19,9 +19,11 @@ export function HomeImage({
     <Image
       src={imageSrc}
       alt={alt}
+      layout="responsive"
+      objectFit="container"
       width={dimensions.height}
       height={dimensions.width}
-      className="w-lg object-cover rounded-lg"
+      //className="w-lg object-cover rounded-lg"
       onError={() => {
         setImageSrc("/home.jpg");
       }}

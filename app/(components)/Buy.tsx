@@ -32,7 +32,9 @@ const Buy = (props: any) => {
                   as={`/home/${home.address_full}`}
                   key={home._id}
                 >
-                  <HomeImage urlToImage={home.image_url} title={"home"} dimensions={{width: 900, height: 900}}/>
+                  <div className="relative lg:h-[200px] xl:max-h-80 overflow-hidden rounded-lg">
+                    <HomeImage urlToImage={home.image_url} alt={"home"} dimensions={{width: 400, height: 300}}/>
+                  </div>
                   <div className="flex-col text-zinc-700">
                     <p className="font-bold">{home.price}</p>
                   </div>
@@ -77,7 +79,7 @@ const Buy = (props: any) => {
             );
           })}
         </div>
-        <div className="hidden md:block md:w-1/3 h-100 p-4 border rounded-lg">
+        <div className="hidden md:block md:w-1/3 h-100 p-4 border rounded-b-lg bg-[#648076]">
             Map Container
         </div>
       </div>
